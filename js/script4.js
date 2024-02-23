@@ -1,6 +1,6 @@
 function calculer_prix(){
 
-    const $dis=document.getElementById('nemberr').value;
+    var dis=document.getElementById('nemberr').value;
 
     var prix;
 
@@ -8,7 +8,7 @@ function calculer_prix(){
     
 
     if(document.getElementById("Normal").checked==true)  {
-          if($dis<=10){
+          if(dis<=10){
             prix=50
           }
 
@@ -21,7 +21,7 @@ function calculer_prix(){
     }
 
     else{
-        if($dis<=10){
+        if(dis<=10){
             prix=80
           }
 
