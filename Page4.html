@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+    display: grid;
+    place-items: center;
+    background-color: rgb(20, 60, 50);
+}
+
+
+section{
+    position: relative;
+    padding: 15px;
+    margin: 10px;
+    border: solid;
+    border-radius: 30px;
+    background-color: lightgreen;
+}
+
+
+section tr td input{
+    position: relative;
+    background-color: lightgreen;
+    border: 0;
+    border-bottom:solid 1px ;
+    padding: 10px;
+    margin: 10px;
+}
+
+section tr .nam{
+    position: relative;
+    top: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+
+section tr label{
+    position: relative;
+    left: 100%;
+}
+section tr .results{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+section tr button{
+    position: relative;
+    left: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px;
+    border-radius: 20px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightskyblue;
+    color: white;
+
+}
+
+
+
+</style>
+<body>
+    <section class="poids_calculation">
+        <table>
+             <tr>
+                <td class="nam">La distonce:</td>
+                <td><input type="text"  id="nemberr" placeholder="nember" ></td>
+             </tr>
+             <tr>
+                    <td  class="nam"  >Normal(3 personne)</td>
+                    <td><input type="radio" name="1"  value="1" id="Normal"></td>
+                    <td  class="nam">Familial(4 personnes)</td>
+                    <td><input type="radio" name="1"  value="1" id="Familial"></td>
+             </tr>
+             <tr>
+                 <td>
+                    <label for="" class="results" >Prix:</label>
+                    <label for="" class="label"  id="prix">0</label>
+                 </td>
+             </tr>
+             <tr>
+                <td >
+                    <button onclick="calculer_prix()">Calculer</button>
+                </td>
+                <td >
+                    <button onclick="clear_input()">Clear</button>
+                </td>
+             </tr>
+        </table>
+    </section>
+         
+
+
+    <script src="js/script4.js"></script>
+</body>
+</html>
