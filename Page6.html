@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math functions - à faire en jquery</title>
+    <style>
+        .c1 {
+
+        position: relative;
+        top: 50px;
+        left: 100px;
+        background-color: rgb(224, 183, 99);
+        width: 350px;
+        height: 500px;
+        border-radius: 10px;
+
+        }
+
+        .c1 td {
+        padding: 20px;
+        }
+
+        .s1 {
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(52, 129, 88);
+        color: aliceblue;
+        width: 80px;
+        border: 1px;
+        }
+
+        .s1:hover {
+        background-color: rgb(110, 166, 94);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="c1">
+        <form>
+            <table>
+                    <tr>
+                        <td>a</td>
+                        <td><input type="text" id="a"></td>
+                    </tr>
+                    <tr>
+                        <td>b</td>
+                        <td><input type="text" id="b"></td>
+                    </tr>
+                    <tr>
+                        <td>c</td>
+                        <td><input type="text" id="c"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" class="s1" value="Calculer" onclick="solutions()">
+                        </td>
+                        <td>
+                            <input type="button" class="s1" value="Clear" onclick="ok()">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>delta:</td>
+                        <td><label id="delta"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Interpretaion:</td>
+                        <td><label id="inter"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Solutions:</td>
+                        <td>
+                            <label id="x1"></label><br>
+                            <label id="x2"></label>
+                        </td>
+                    </tr>
+
+
+            </table>
+        </form>
+    </div>
+
+    <script>
+
+function solutions(){
+    let a=parseFloat(document.getElementById('a').value);
+    let b=parseFloat(document.getElementById('b').value);
+    let c=parseFloat(document.getElementById('c').value);
+
+    let x;
+    let inter;
+    var xun; var xde; var xra;
+
+    x=Math.pow(b, 2) - 4*(a*c);
+    
+    
+    
+    if (x > 0){
+        inter='il y a deux solution'
+        xun = ((-b) - Math.sqrt(x))/(2*a);
+        xde = ((-b) + Math.sqrt(x))/(2*a);
+        
+    }
+    else if(x == 0){
+        inter='il y a une seule solution'
+        xun = (-b)/(2*a);
+        xde='';
+
+    }
+    else
+    {
+        inter="il n y a pas de solution"
+        xde='';
+        xun='';
+    }
+
+    document.getElementById('delta').innerHTML=x;
+    document.getElementById('inter').innerHTML=inter;
+
+    document.getElementById('x1').innerHTML=xun;
+    document.getElementById('x2').innerHTML=xde;
+ 
+    
+
+    
+
+}
+function ok(){
+    document.getElementById('a').value='';
+    document.getElementById('b').value='';
+    document.getElementById('c').value='';
+    
+    document.getElementById('delta').innerHTML='';
+    document.getElementById('x1').innerHTML='';
+    document.getElementById('x2').innerHTML='';
+    document.getElementById('inter').innerHTML='';
+}
+
+
+    </script>
+</body>
+</html>
