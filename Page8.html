@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+#boutton1{
+    background-color: aquamarine;
+}
+#boutton2{
+    background-color: orange;
+}
+#boutton3{
+    background-color: blueviolet;
+}
+#boutton4{
+    background-color: lightskyblue;
+}
+#boutton5{
+    background-color: yellow;
+}
+#boutton6{
+    background-color: green;
+}
+#boutton7{
+    background-color: brown;
+}
+
+#d1{
+    height: 100px;
+    width: 100px;
+    top: 40px;
+    left: 50px;
+    position: relative;
+}
+
+    </style>    
+</head>
+<body>
+    <div class="button">
+        <button id="boutton1">Click</button>
+        <button id="boutton2">Double Click</button>
+        <button id="boutton3">mouseover</button>
+        <button id="boutton4">mouseout</button>
+        <button id="boutton5">mousedown</button>
+        <button id="boutton6">mouseup</button>
+        <button id="boutton7">mousemove</button>
+    </div>
+
+    <div id="d1"></div>
+
+    <script>
+        var b1 = document.getElementById("boutton1");
+        var b2 = document.getElementById("boutton2");
+        var b3 = document.getElementById("boutton3");
+        var b4 = document.getElementById("boutton4");
+        var b5 = document.getElementById("boutton5");
+        var b6 = document.getElementById("boutton6");
+        var b7 = document.getElementById("boutton7");
+        var b8 = document.getElementById("boutton8");
+        var d = document.getElementById("d1");
+
+        b1.addEventListener("click" , function(){
+            d.style.backgroundColor = "aquamarine";
+        });
+
+        b2.addEventListener("dblclick" , function(){
+            d.style.backgroundColor = "orange";
+        });
+
+        b3.addEventListener("mouseover" , function(){
+            d.style.backgroundColor = "blueviolet";
+        });
+        b4.addEventListener("mouseout" , function(){
+            d.style.backgroundColor = "lightskyblue";
+        });
+        b5.addEventListener("mousedown" , function(){
+            d.style.backgroundColor = "yellow";
+        });
+        b6.addEventListener("mouseup" , function(){
+            d.style.backgroundColor = "green";
+        });
+        b7.addEventListener("mousemove" , function(){
+            d.style.backgroundColor = "brown";
+        });
+
+    </script>
+</body>
+</html>
