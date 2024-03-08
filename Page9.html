@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <style>
+        
+        .c1 {
+
+            position: relative;
+            top: 50px;
+            left: 100px;
+            background-color: rgb(238, 187, 192);
+            width: 550px;
+            height: 450px;
+            border-radius: 10px;
+            }
+
+            .c1 td {
+            padding: 10px;
+            }
+
+            .c1 * {
+
+            margin: 10px;
+
+            }
+
+            .c4 {
+
+            background-color: rgb(135, 168, 192);
+            padding: 5px;
+            width: 150px;
+            border-radius: 10px;
+            }
+
+
+            .c5 {
+
+            background-color: rgb(154, 239, 170);
+            padding: 5px;
+            width: 150px;
+            border-radius: 10px;
+            }
+
+            .s1 {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgb(216, 216, 26);
+            color: rgb(15, 74, 125);
+            width: 80px;
+            border: 1px;
+
+            }
+
+            .s1:hover {
+            background-color: rgb(229, 247, 148);
+            }
+
+    </style>
+</head>
+<body>
+    
+    <div class="c1">
+        <form>
+            <table>
+                    
+                    <tr>
+                        <td>Nom:</td>
+                        <td>
+
+                            <input type="text" id="nom"> <label id="l1" >  Obligatoire</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Prenom:</td>
+                        <td>
+
+                            <input type="text" id="prenom"><label id="l2"  style="color:red">  Obligatoire</label>
+                        </td>
+                    </tr>
+
+                   
+
+                    <tr>
+                        <td>Email:</td>
+                        <td>
+
+                            <input type="email" id="mail"><label id="l3"  style="color:red">  Obligatoire</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Niveau d'etudes:</td>
+                        <td>
+
+                            <select name="ne" id="ne" >
+                                <option value="raw">--Please choose--</option>
+                                <option value="n1">Bac</option>
+                                <option value="n2">Bac + 2</option>
+                                <option value="n3">Bac + 5</option>
+                                
+                                
+                            </select>
+                            
+                            <label id="l4"   style="color:red">  Veillez choisir</label>
+
+                        </td>
+                    </tr>
+                                        
+                    
+                    <tr>
+                        <td>
+                            <input type="button" id="aff" class="s1" value="Envoyer" >
+                        </td>
+                        <td>
+                            <input type="button" id="cl" class="s1" value="Clear" >
+                        </td>
+
+                    </tr>
+                   
+                    
+
+
+            </table>
+        </form>
+    </div>
+
+    <script>
+
+        let nom_input = document.getElementById("nom");
+        let prenom_input = document.getElementById("prenom");
+        let mail_input = document.getElementById("mail");
+        let level_input = document.getElementById("ne");
+
+        let label1 = document.getElementById("l1");
+        let label2 = document.getElementById("l2");
+        let label3 = document.getElementById("l3");
+        let label4 = document.getElementById("l4");
+
+        let bouton_send = document.getElementById("aff");
+
+        label1.style.display = 'none';
+        label2.style.display = 'none';
+        label3.style.display = 'none';
+        label4.style.display = 'none';
+
+        bouton_send.addEventListener("click", function() {
+          
+            if(nom_input.value == "") {
+
+                label1.style.display = '';
+                label1.style.color = "red";
+            }
+            else {
+                label1.style.display = 'none';
+            }
+
+
+            if(prenom_input.value == "") {
+
+                label2.style.display = '';
+                label2.style.color = "red";
+            }
+            else {
+                label2.style.display = 'none';
+            }
+
+            if(mail_input.value == "") {
+
+                label3.style.display = '';
+                label3.style.color = "red";
+            }
+
+            else {
+                label3.style.display = 'none';
+
+            }
+
+            if(level_input.value == "raw") {
+
+                label4.style.display = '';
+                label4.style.color = "red";
+                }
+
+            else {
+                label4.style.display = 'none';
+
+            }
+
+
+
+        });
+
+    </script>
+</body>
+</html>
