@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AppendChild and RemoveChild Example</title>
+<style>
+    #container {
+        margin-top: 20px;
+    }
+    .product {
+        margin-bottom: 5px;
+        background-color: bisque;
+    }
+</style>
+</head>
+<body>
+
+<input type="text" id="productName" placeholder="Nom du produit">
+<button id="addBtn">Ajouter produit</button>
+<div id="container">
+    
+
+
+</div>
+
+<script>
+let count = 1;
+const container = document.getElementById('container');
+
+document.getElementById('addBtn').addEventListener('click', function() {
+    const productNameInput = document.getElementById('productName');
+    const productName = productNameInput.value.trim();
+    
+    if (productName !== '') {
+        const newProduct = document.createElement('p');
+        const productId = 'product_' + count;
+
+        newProduct.setAttribute('id', productId);
+        newProduct.classList.add('product');
+        newProduct.innerHTML = productName + '   <button class="removeBtn">Supprimer</button>';
+
+        container.appendChild(newProduct);
+        
+        const removeBtn = newProduct.querySelector('.removeBtn');
+        removeBtn.addEventListener('click', function() {
+                this.parentNode.remove();
+        });
+
+        productNameInput.value = '';
+
+        count++;
+
+    } else {
+        alert('Veuillez saisir un nom de produit valide.');
+    }
+});
+</script>
+
+</body>
+</html>
