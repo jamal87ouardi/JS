@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation 2</title>
+    <style>
+
+        .c1 {
+
+        position: relative;
+        top: 50px;
+        left: 100px;
+        background-color: rgb(238, 187, 192);
+        width: 550px;
+        height: 450px;
+        border-radius: 10px;
+        }
+
+        .c1 td {
+        padding: 10px;
+        }
+
+        .c1 * {
+
+        margin: 10px;
+
+        }
+
+        .c4 {
+
+        background-color: rgb(135, 168, 192);
+        padding: 5px;
+        width: 150px;
+        border-radius: 10px;
+        }
+
+
+        .c5 {
+
+        background-color: rgb(154, 239, 170);
+        padding: 5px;
+        width: 150px;
+        border-radius: 10px;
+        }
+
+        .s1 {
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(216, 216, 26);
+        color: rgb(15, 74, 125);
+        width: 80px;
+        border: 1px;
+
+        }
+
+        .s1:hover {
+        background-color: rgb(229, 247, 148);
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="c1">
+        <form>
+            <table>
+                    
+                    <tr>
+                        <td>Nom:</td>
+                        <td>
+
+                            <input type="text" id="nom"> <label id="l1" hidden></label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Prenom:</td>
+                        <td>
+
+                            <input type="text" id="prenom"><label id="l2"  hidden></label>
+                        </td>
+                    </tr>
+
+                   
+
+                    <tr>
+                        <td>Email:</td>
+                        <td>
+
+                            <input type="email" id="mail"><label id="l3"  hidden></label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Password:</td>
+                        <td>
+
+                            <input type="password" id="pass"><label id="l4"  hidden></label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Confirm Password:</td>
+                        <td>
+
+                            <input type="password" id="passco" disabled><label id="l5"  hidden></label>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td>Niveau d'etudes:</td>
+                        <td>
+
+                            <select name="ne" id="ne" >
+                                <option value="raw">--Please choose--</option>
+                                <option value="n1">Bac</option>
+                                <option value="n2">Bac + 2</option>
+                                <option value="n3">Bac + 5</option>
+                                
+                                
+                            </select>
+                            
+                            <label id="l6"   hidden></label>
+
+                        </td>
+                    </tr>
+                         
+                    
+                    <tr>
+                        <td>Télephone:</td>
+                        <td>
+
+                            <input type="tel" id="phone"><label id="l7"  hidden></label>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <input type="button" id="aff" class="s1" value="Envoyer" >
+                        </td>
+                        <td>
+                            <input type="button" id="cl" class="s1" value="Clear" >
+                        </td>
+
+                    </tr>
+                   
+                    
+
+
+            </table>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        
+$('#mail').on('blur',function(){
+
+m=$('#mail').val();
+
+if(m=="")  $('#l3').html("  Obligatoire").show().css("color","red");
+
+else 
+{
+    regex = /[A-Za-z]+@[A-Za-z]+\.[A-Za-z]+/;
+
+    if(regex.test(m))   $('#l3').hide();
+
+    else $('#l3').html("  Format Email invalide").show().css("color","red");
+
+}
+});
+
+
+
+$('#nom').on('blur',function(){
+
+var nom = $('#nom').val();
+
+if(nom=="")  $('#l1').show().css("color","red").text(" Obligatoire");
+else $('#l1').hide();
+
+
+});
+
+
+$('#phone').on('blur',function(){
+
+p=$('#phone').val();
+
+regex = /0[5-7]\d{8}$/;
+
+if(regex.test(p))   $('#l7').hide();
+
+    else $('#l7').html("  Format Télephone invalide").show().css("color","red");
+
+});
+
+
+$('#pass').on('blur',function(){
+
+pass=$('#pass').val();
+
+regex = /((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/;
+
+if(regex.test(pass))  { 
+    $('#l4').hide();
+    $('#passco').prop('disabled', false); 
+    
+    $('#passco').blur(function(){
+        if($('#pass').val()==$('#passco').val())  $('#l5').html("  Vérification réussie").show().css("color","green");
+        else $('#l5').html("  Vérification échouée").show().css("color","red");
+    
+    });
+
+}
+
+    else {
+        $('#l4').html("  Mot de passe faible !").show().css("color","red");
+        $('#passco').prop('disabled', true); 
+        $('#l5').hide();    
+}
+
+});
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
