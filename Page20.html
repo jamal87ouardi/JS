@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json to dropdown</title>
+    <style>
+
+        .c1 {
+
+        position: relative;
+        top: 50px;
+        left: 100px;
+        background-color: rgb(174, 172, 172);
+        width: 650px;
+        height: 350px;
+        border-radius: 10px;
+        }
+
+        .c1 td {
+        padding: 20px;
+        }
+
+        .c1 * {
+        padding: 5px;
+        margin: 10px;
+        }
+
+        .c1 img {
+
+        width: 200px;
+        height: 200px;
+        }
+
+        .s1 {
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(216, 216, 26);
+        color: blue;
+        width: 100px;
+        border: 1px;
+
+        }
+
+        .s1:hover {
+        background-color: rgb(229, 247, 148);
+        }
+
+        progress {
+
+        margin-left: 60px;
+
+        }
+
+
+        label {
+        margin-left: 10px;
+        }
+
+        .details {
+
+        position: relative;
+        top:-200px;
+        left: 250px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="c1">
+        <form>
+           
+           
+           
+           <select id="sel">
+
+            <option value="op1">--- Choose a car ---</option>
+
+
+
+           </select>
+
+           
+
+           <input type="button" class="s1" value="Show details" id="btn"><br> <br>
+
+           <img id="img_car" >
+           <div class="details">
+                     Price:<label id="price"></label>  <br>
+                     Year:<label id="year"></label>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+
+                
+        $(document).ready(function() {
+
+        var carsData
+        $.ajax({
+            url: 'https://mocki.io/v1/57902311-41e0-42f1-8782-560bf641c9bf', 
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data)
+                carsData = data
+                var carSelect = $('#sel');
+                for (var i = 0; i < carsData.length; i++) {
+                    var car = carsData[i];
+                    var option = $('<option></option>').attr('value', car.id).text(car.make + ' - ' + car.model);
+                    carSelect.append(option);
+                }
+            },
+            error: function(xhr, status, error) {
+                
+                console.error('Erreur lors de la récupération des données des voitures:', error);
+            }
+        });
+
+
+
+
+
+
+
+        $('#btn').on('click',function(){
+
+            selected_car = $('#sel').val();
+
+            for (var i = 0; i < carsData.length; i++) {
+
+                var car = carsData[i];
+
+                if(selected_car==car.id) {
+
+                    
+
+                    $('#img_car').attr("src",car.image)
+
+                    
+                    $('#price').html(car.price)
+
+                    $('#year').html(car.year)
+                    
+
+                }
+            
+            }
+        });
+
+
+        });
+
+
+
+
+    </script>
+</body>
+</html>
