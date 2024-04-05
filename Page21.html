@@ -147,24 +147,7 @@
 
 
 
-        $('#btn').on('click',function(){
-
-            selected_car = $('#sel').val();
-
-            for (var i = 0; i < carsData.length; i++) {
-
-                var car = carsData[i];
-
-                if(selected_car==car.id) {
-              
-                    $('#img_car').attr("src",car.image)                  
-                    $('#price').html(car.price)
-                    $('#year').html(car.year)                   
-
-                }
-            
-            }
-        });
+        
 
 
         });
